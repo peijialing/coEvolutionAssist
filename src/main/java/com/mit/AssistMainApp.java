@@ -1,4 +1,5 @@
 package com.mit;
+import com.mit.dataStructure.AppCandidate;
 import com.mit.dataStructure.Req;
 import com.mit.rewriting;
 
@@ -7,6 +8,10 @@ import com.mit.rewriting;
  */
 public class AssistMainApp {
     public static void main(String[] args) throws Exception {
+        double alpha = 0.0;
+        double beta = 0.0;
+        double theta = 0.0;
+        double gamma = 0.0;
         String dbAddr = args[0];
         String appAddr = args[1];
         int numOfChanges = Integer.parseInt(args[2]);
@@ -23,10 +28,16 @@ public class AssistMainApp {
             int type = resReqArr[executeId].type;
             String[] paramArr = resReqArr[executeId].paramArray;
             String[] tableList = identification.IdentifySubSchema(type,paramArr);
-            String[] appArr = identification.IdentifyApplications(tableList,appAddr);
+            AppCandidate[] appArr = identification.IdentifyApplications(tableList,appAddr);
 
             // start re-writing
-
+            rewriting.dealWithQuery(appArr,type,paramArr);
+            //calculate possible decay and maintenance
+            int appmain = calculation.calc_appmain();
+            int appdecay = calculation.calc_appdecay();
+            int dbmain = calculation.calc_dbmain();
+            int dbdecay = calculation.calc_dbdecay();
+            double totalDecay = alpha*appdecay+beta*appmain+theta*dbdecay+gamma*dbmain;
         }
 
     }

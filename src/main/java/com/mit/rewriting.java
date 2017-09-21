@@ -1,6 +1,10 @@
 package com.mit;
 import com.mit.dataStructure.AppCandidate;
 import com.mit.dataStructure.variables;
+import com.sun.org.apache.xpath.internal.operations.Variable;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +26,10 @@ public class rewriting {
         }
         return varRelatedArr;
     }
+    //todo: given bind var list, ask dba to decide
+    public static void AskDBA(ArrayList<variables> bindVarList) {
 
+    }
     // TODO: 6/9/2017
     public static AppCandidate[] interactWithUser(AppCandidate[] AppCanList) {
         return new AppCandidate[1];
@@ -35,6 +42,7 @@ public class rewriting {
         switch (ChangeType) {
             case 0: // add column
                 for (int i=0; i<resAPPList.length; ++i) {
+                    AppCandidate currentApp = resAPPList[i];
 
                 }
 
@@ -49,6 +57,7 @@ public class rewriting {
 
         }
         ArrayList<variables> bindVarList = findBindingVar(resAPPList);
+        AskDBA(bindVarList);
 
     }
 }

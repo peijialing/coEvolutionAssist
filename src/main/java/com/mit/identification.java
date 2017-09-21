@@ -1,5 +1,7 @@
 package com.mit;
 
+import com.mit.dataStructure.AppCandidate;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,12 +36,12 @@ public class identification {
     }
 
 
-    public static String[] IdentifyApplications(String[] tableList, String appAddr) {
+    public static AppCandidate[] IdentifyApplications(String[] tableList, String appAddr) {
 
             String pathName = appAddr;
             int numOfApp = 0;
             callScript("scanApp.sh",tableList,appAddr);
-            return new String[numOfApp];
+            return new AppCandidate[numOfApp];
 
 
 
