@@ -4,6 +4,8 @@ package com.mit;
  * Created by peijialing on 23/9/2017.
  */
 
+import com.mit.dataStructure.TwoTuple;
+import com.mit.dataStructure.table_info;
 import gudusoft.gsqlparser.*;
 import gudusoft.gsqlparser.nodes.*;
 import gudusoft.gsqlparser.stmt.TAlterTableStatement;
@@ -15,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 * Parsing DDL
@@ -322,9 +326,14 @@ public class ddlparser {
     protected static void analyzeCreateTableStmt(TCreateTableSqlStatement pStmt){
         System.out.println("Table Name:"+pStmt.getTargetTable().toString());
         System.out.println("Columns:");
+        table_info table = new table_info();
+        ArrayList<String> coloumnList = new ArrayList<String>();
+        ArrayList<String> primaryKey = new ArrayList<String>();
+        ArrayList<TwoTuple<String,String>> foreignKey = new ArrayList<TwoTuple<String, String>>();
         TColumnDefinition column;
         for(int i=0;i<pStmt.getColumnList().size();i++){
             column = pStmt.getColumnList().getColumn(i);
+            coloumnList.add(column.getColumnName().toString());
             System.out.println("\tname:"+column.getColumnName().toString());
             System.out.println("\tdatetype:"+column.getDatatype().toString());
             if (column.getDefaultExpression() != null){
@@ -336,11 +345,48 @@ public class ddlparser {
             if (column.getConstraints() != null){
                 System.out.println("\tinline constraints:");
                 for(int j=0;j<column.getConstraints().size();j++){
+                    TConstraint constraint = column.getConstraints().getConstraint(j);
+                    switch (column.getConstraints().getConstraint(j).getConstraint_type()){
+                        case primary_key:
+                            if (constraint.getColumnList() != null){
+                                    for(int k=0;k<constraint.getColumnList().size();k++){
+                                        primaryKey.add(constraint.getColumnList().getElement(k).toString());
+                                    }
+
+                                }
+                            break;
+                        case foreign_key:
+                        case reference:
+                            System.out.println("\t\tforeign key");
+
+
+                                if (constraint.getColumnList() != null){
+                                    for(int k=0;k<constraint.getColumnList().size();k++){
+
+                                        constraint.getColumnList().getElement(k).toString();
+                                    }
+                                }
+
+
+                            System.out.println("\t\treferenced table:"+constraint.getReferencedObject().toString());
+                            if (constraint.getReferencedColumnList() != null){
+                                String lcstr="";
+                                for(int k=0;k<constraint.getReferencedColumnList().size();k++){
+                                    if (k !=0 ){lcstr = lcstr+",";}
+                                    lcstr = lcstr+constraint.getReferencedColumnList().getObjectName(k).toString();
+                                }
+                                System.out.println("\t\treferenced columns:"+lcstr);
+                            }
+                            break;
+
+                    }
                     printConstraint(column.getConstraints().getConstraint(j),false);
                 }
             }
             System.out.println("");
         }
+        table.columnNameList = coloumnList;
+
 
         if(pStmt.getTableConstraints().size() > 0){
             System.out.println("\toutline constraints:");
