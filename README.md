@@ -1,5 +1,8 @@
 # coEvolutionAssist
-MIT database project- Database Decay and how to avoid it
-Supervisor: Mike Stonebraker & Michael Brodie
+MIT database project- Database Coevolution Assistant
+
+Supervisor: Mike Stonebraker \& Michael Brodie
+
 Author: Pei Jialing
+
 under construction...
