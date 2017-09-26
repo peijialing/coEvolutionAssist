@@ -17,7 +17,12 @@
 		<url>company url</url>
 		</organization>
 	-->
-
+	<repositories>
+		<repository>
+			<id>java.net</id>
+			<url>https://maven.java.net/content/repositories/public/</url>
+		</repository>
+	</repositories>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -26,7 +31,22 @@
 		</license>
 	</licenses>
 
+
 	<dependencies>
+		<!--   general sql parser-->
+		<dependency>
+			<groupId>com.gsp</groupId>
+			<artifactId>gsp</artifactId>
+			<version>2.0</version>
+			<scope>system</scope>
+			<systemPath>/Users/peijialing/Downloads/dist/gsp.jar</systemPath>
+		</dependency>
+		<!--  jsql parser-->
+		<dependency>
+			<groupId>com.github.jsqlparser</groupId>
+			<artifactId>jsqlparser</artifactId>
+			<version>1.1</version>
+		</dependency>
 		<!--  WICKET DEPENDENCIES -->
 
 		<dependency>
