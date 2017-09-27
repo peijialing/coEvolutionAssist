@@ -1,9 +1,11 @@
 package com.mit;
 import com.mit.dataStructure.AppCandidate;
 import com.mit.dataStructure.Req;
+import com.mit.dataStructure.table_info;
 import com.mit.rewriting;
 import gudusoft.gsqlparser.EDbVendor;
 import gudusoft.gsqlparser.TGSqlParser;
+import gudusoft.gsqlparser.stmt.TCreateTableSqlStatement;
 import net.sf.jsqlparser.parser.CCJSqlParserUtil;
 import net.sf.jsqlparser.statement.Statement;
 import net.sf.jsqlparser.statement.select.Select;
@@ -13,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import com.mit.ddlparser;
 /**
@@ -20,6 +23,7 @@ import com.mit.ddlparser;
  */
 public class AssistMainApp {
     //for whole structure, pls refer to my google doc https://docs.google.com/document/d/19YpWNRyfE9EhLNTvxr3D8i-oomhn994B4P45AUSPyPc/edit
+    public static ArrayList<table_info> tableList = new ArrayList<table_info>();
     public static void main(String args[])
     {
 
@@ -64,13 +68,21 @@ public class AssistMainApp {
         sqlparser.sqlfilename  = args[0];
 
         int ret = sqlparser.parse();
+
         if (ret == 0){
             for(int i=0;i<sqlparser.sqlstatements.size();i++){
-                ddlparser.analyzeStmt(sqlparser.sqlstatements.get(i));
+                        tableList.add(ddlparser.analyzeCreateTableStmt((TCreateTableSqlStatement) sqlparser.sqlstatements.get(i)));
+
                 System.out.println("");
             }
         }else{
             System.out.println(sqlparser.getErrormessage());
         }
+        //read dml and create a new schema in our internal representation
+        String[] dmlFileName = new String[1];
+        dmlFileName[0] = "/Users/peijialing/Desktop/test_alter.sql";
+        readDML.main(dmlFileName);
     }
+
+
 }

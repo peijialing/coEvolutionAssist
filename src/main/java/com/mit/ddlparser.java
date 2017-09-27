@@ -5,6 +5,7 @@ package com.mit;
  */
 
 import com.mit.dataStructure.TwoTuple;
+import com.mit.dataStructure.foreignKey;
 import com.mit.dataStructure.table_info;
 import gudusoft.gsqlparser.*;
 import gudusoft.gsqlparser.nodes.*;
@@ -87,7 +88,7 @@ public class ddlparser {
                 analyzeUpdateStmt((TUpdateSqlStatement)stmt);
                 break;
             case sstcreatetable:
-                analyzeCreateTableStmt((TCreateTableSqlStatement)stmt);
+                table_info newTable = analyzeCreateTableStmt((TCreateTableSqlStatement)stmt);
                 break;
             case sstaltertable:
                 analyzeAlterTableStmt((TAlterTableStatement) stmt);
@@ -98,6 +99,7 @@ public class ddlparser {
             default:
                 System.out.println(stmt.sqlstatementtype.toString());
         }
+
     }
 
     protected static void printConstraint(TConstraint constraint, Boolean outline){
@@ -318,18 +320,21 @@ public class ddlparser {
     protected static void analyzeAlterTableStmt(TAlterTableStatement pStmt){
         System.out.println("Table Name:"+pStmt.getTableName().toString());
         System.out.println("Alter table options:");
+
         for(int i=0;i<pStmt.getAlterTableOptionList().size();i++){
+            TAlterTableOption temp = pStmt.getAlterTableOptionList().getAlterTableOption(i);
             printAlterTableOption(pStmt.getAlterTableOptionList().getAlterTableOption(i));
         }
     }
 
-    protected static void analyzeCreateTableStmt(TCreateTableSqlStatement pStmt){
+    protected static table_info analyzeCreateTableStmt(TCreateTableSqlStatement pStmt){
         System.out.println("Table Name:"+pStmt.getTargetTable().toString());
+        String tableName = pStmt.getTargetTable().toString();
         System.out.println("Columns:");
         table_info table = new table_info();
         ArrayList<String> coloumnList = new ArrayList<String>();
         ArrayList<String> primaryKey = new ArrayList<String>();
-        ArrayList<TwoTuple<String,String>> foreignKey = new ArrayList<TwoTuple<String, String>>();
+        ArrayList<foreignKey> foreignKeyList = new ArrayList<foreignKey>();
         TColumnDefinition column;
         for(int i=0;i<pStmt.getColumnList().size();i++){
             column = pStmt.getColumnList().getColumn(i);
@@ -358,24 +363,19 @@ public class ddlparser {
                         case foreign_key:
                         case reference:
                             System.out.println("\t\tforeign key");
-
-
-                                if (constraint.getColumnList() != null){
-                                    for(int k=0;k<constraint.getColumnList().size();k++){
-
-                                        constraint.getColumnList().getElement(k).toString();
-                                    }
+                            foreignKey fk = new foreignKey();
+                            if (constraint.getColumnList() != null){
+                                for(int k=0;k<constraint.getColumnList().size();k++){
+                                    fk.keyName.add( constraint.getColumnList().getElement(k).toString());
                                 }
-
-
+                            }
+                            fk.RefTable = constraint.getReferencedObject().toString();
                             System.out.println("\t\treferenced table:"+constraint.getReferencedObject().toString());
                             if (constraint.getReferencedColumnList() != null){
-                                String lcstr="";
                                 for(int k=0;k<constraint.getReferencedColumnList().size();k++){
-                                    if (k !=0 ){lcstr = lcstr+",";}
-                                    lcstr = lcstr+constraint.getReferencedColumnList().getObjectName(k).toString();
+
+                                    fk.RefAttr.add(constraint.getReferencedColumnList().getObjectName(k).toString());
                                 }
-                                System.out.println("\t\treferenced columns:"+lcstr);
                             }
                             break;
 
@@ -385,8 +385,10 @@ public class ddlparser {
             }
             System.out.println("");
         }
+        table.tableName = tableName;
         table.columnNameList = coloumnList;
-
+        table.primaryKey = primaryKey;
+        table.foreignKey = foreignKeyList;
 
         if(pStmt.getTableConstraints().size() > 0){
             System.out.println("\toutline constraints:");
@@ -395,6 +397,7 @@ public class ddlparser {
                 System.out.println("");
             }
         }
+        return table;
     }
 
 }
