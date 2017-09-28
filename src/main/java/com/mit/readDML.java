@@ -4,6 +4,7 @@ import com.mit.dataStructure.table_info;
 import gudusoft.gsqlparser.EDbVendor;
 import gudusoft.gsqlparser.TCustomSqlStatement;
 import gudusoft.gsqlparser.TGSqlParser;
+import gudusoft.gsqlparser.TStatementList;
 import gudusoft.gsqlparser.nodes.TAlterTableOption;
 import gudusoft.gsqlparser.stmt.TAlterTableStatement;
 import gudusoft.gsqlparser.stmt.TCreateTableSqlStatement;
@@ -19,6 +20,7 @@ import java.util.Iterator;
  * Created by peijialing on 27/9/2017.
  */
 public class readDML {
+    public static TStatementList statementList = new TStatementList();
     public static int searchForTable(String tableName)  {
         //traverse; may add advanced search method
         int res = 0;
@@ -37,13 +39,18 @@ public class readDML {
 
         String tableName = alterStatement.getTableName().toString();
         int tableId = searchForTable(tableName);
+        //identify corresponding db components
+        identification.fillAlterInfo(alterStatement);
+        //schema mapping in internal structure
         for(int i=0;i<alterStatement.getAlterTableOptionList().size();i++){
             TAlterTableOption alterOp = alterStatement.getAlterTableOptionList().getAlterTableOption(i);
             switch (alterOp.getOptionType()) {
                 //todo: add more cases
                 case AddColumn:
                     for (int j=0; j<alterOp.getColumnDefinitionList().size();++j) {
+                        //map to new schema
                         AssistMainApp.tableList.get(tableId).columnNameList.add(alterOp.getColumnDefinitionList().getColumn(j).getColumnName().toString());
+
 
                     }
                     break;
@@ -51,6 +58,9 @@ public class readDML {
                     System.out.println("========debug=========");
                     AssistMainApp.tableList.get(tableId).columnNameList.remove(alterOp.getColumnName().toString());
                     System.out.println("========debug=========");
+                    break;
+                case RenameColumn:
+                    break;
 
             }
             //ddlparser.printAlterTableOption(alterStatement.getAlterTableOptionList().getAlterTableOption(i));
@@ -99,6 +109,7 @@ public class readDML {
 
         int ret = sqlparser.parse();
         if (ret == 0){
+            statementList = sqlparser.sqlstatements;
             for(int i=0;i<sqlparser.sqlstatements.size();i++){
                 TCustomSqlStatement stmt = sqlparser.sqlstatements.get(i);
                 ddlparser.analyzeAlterTableStmt((TAlterTableStatement) sqlparser.sqlstatements.get(i));

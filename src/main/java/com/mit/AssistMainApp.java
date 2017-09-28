@@ -1,5 +1,6 @@
 package com.mit;
 
+import gudusoft.gsqlparser.EAlterTableOptionType;
 import org.apache.commons.cli.*;
 import org.apache.commons.cli.Option.Builder;
 import com.mit.dataStructure.AppCandidate;
@@ -28,6 +29,7 @@ public class AssistMainApp {
     //for whole structure, pls refer to my google doc https://docs.google.com/document/d/19YpWNRyfE9EhLNTvxr3D8i-oomhn994B4P45AUSPyPc/edit
 
     public static ArrayList<table_info> tableList = new ArrayList<table_info>();
+
     public static void main(String args[])
     {
         //parse args
@@ -117,10 +119,13 @@ public class AssistMainApp {
         }else{
             System.out.println(sqlparser.getErrormessage());
         }
-        //read dml and create a new schema in our internal representation
+        //read dml identify join paths(subschemas) and create a new schema in our internal representation
         String[] dmlFileName = new String[1];
         dmlFileName[0] = modifySchemaFile;
         readDML.main(dmlFileName);
+
+        //start rewriting process
+
     }
 
 
