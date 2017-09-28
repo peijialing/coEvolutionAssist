@@ -1,4 +1,7 @@
 package com.mit;
+
+import org.apache.commons.cli.*;
+import org.apache.commons.cli.Option.Builder;
 import com.mit.dataStructure.AppCandidate;
 import com.mit.dataStructure.Req;
 import com.mit.dataStructure.table_info;
@@ -23,17 +26,53 @@ import com.mit.ddlparser;
  */
 public class AssistMainApp {
     //for whole structure, pls refer to my google doc https://docs.google.com/document/d/19YpWNRyfE9EhLNTvxr3D8i-oomhn994B4P45AUSPyPc/edit
+
     public static ArrayList<table_info> tableList = new ArrayList<table_info>();
     public static void main(String args[])
     {
+        //parse args
 
-        if (args.length != 1){
-            System.out.println("Usage: java parsingDDL sqlfile.sql");
+        String createSchemaFile = new String();
+        String modifySchemaFile = new String();
+        String queryFile = new String();
+        Options options = new Options();
+
+        Option createFile = new Option("c", "create", true, "createSchemaFile");
+        createFile.setRequired(true);
+        options.addOption(createFile);
+
+        Option ModifyFile = new Option("m", "modify", true, "modifySchemaFile");
+        ModifyFile.setRequired(true);
+        options.addOption(ModifyFile);
+
+        Option qFile = new Option("q", "query", true, "queryFile");
+        qFile.setRequired(true);
+        options.addOption(qFile);
+
+        CommandLineParser parser = new DefaultParser();
+        HelpFormatter formatter = new HelpFormatter();
+        CommandLine cmd;
+
+        try {
+            cmd = parser.parse(options, args);
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+            formatter.printHelp("utility-name", options);
+
+            System.exit(1);
             return;
         }
-        File file=new File(args[0]);
+//        if (args.length != 1){
+//            System.out.println("Usage: java parsingDDL sqlfile.sql");
+//            return;
+//        }
+        createSchemaFile = cmd.getOptionValue("c");
+        modifySchemaFile = cmd.getOptionValue("m");
+        queryFile = cmd.getOptionValue("q");
+
+        File file=new File(createSchemaFile);
         if (!file.exists()){
-            System.out.println("File not exists:"+args[0]);
+            System.out.println("File not exists:"+createSchemaFile);
             return;
         }
 
@@ -65,7 +104,7 @@ public class AssistMainApp {
 
         TGSqlParser sqlparser = new TGSqlParser(dbVendor);
 
-        sqlparser.sqlfilename  = args[0];
+        sqlparser.sqlfilename  = createSchemaFile;
 
         int ret = sqlparser.parse();
 
@@ -80,7 +119,7 @@ public class AssistMainApp {
         }
         //read dml and create a new schema in our internal representation
         String[] dmlFileName = new String[1];
-        dmlFileName[0] = "/Users/peijialing/Desktop/test_alter.sql";
+        dmlFileName[0] = modifySchemaFile;
         readDML.main(dmlFileName);
     }
 
