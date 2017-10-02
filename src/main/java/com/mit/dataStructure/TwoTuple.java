@@ -15,6 +15,12 @@ public class TwoTuple<A, B> {
             second = b;
         }
 
+        public A getFirst() {
+            return first;
+        }
+        public B getSecond() {
+            return second;
+        }
         public String toString(){
             return "(" + first + ", " + second + ")";
         }
