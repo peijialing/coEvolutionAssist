@@ -10,9 +10,13 @@ import java.util.ArrayList;
 public class alter_info {
     public alter_info() {
         joinPath = new JoinPath();
+        replacedTableName = null;
+        oriTableName = null;
 
     }
     public EAlterTableOptionType type;
     public JoinPath joinPath;
-
+    public String oriTableName;
+    public String replacedTableName;
+    public String replacedColName;
 }

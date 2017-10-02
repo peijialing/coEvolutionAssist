@@ -323,7 +323,7 @@ public class ddlparser {
 
         for(int i=0;i<pStmt.getAlterTableOptionList().size();i++){
             TAlterTableOption temp = pStmt.getAlterTableOptionList().getAlterTableOption(i);
-            printAlterTableOption(pStmt.getAlterTableOptionList().getAlterTableOption(i));
+            //printAlterTableOption(pStmt.getAlterTableOptionList().getAlterTableOption(i));
         }
     }
 

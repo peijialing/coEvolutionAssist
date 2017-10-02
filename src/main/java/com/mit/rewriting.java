@@ -3,6 +3,9 @@ import com.mit.dataStructure.*;
 import com.sun.org.apache.xpath.internal.operations.Variable;
 import gudusoft.gsqlparser.EDbVendor;
 import gudusoft.gsqlparser.TGSqlParser;
+import gudusoft.gsqlparser.TSourceToken;
+import gudusoft.gsqlparser.nodes.TObjectName;
+import gudusoft.gsqlparser.nodes.TObjectNameList;
 import gudusoft.gsqlparser.nodes.TTable;
 import gudusoft.gsqlparser.stmt.TSelectSqlStatement;
 
@@ -13,7 +16,7 @@ import java.util.ArrayList;
  * Created by peijialing on 23/8/2017.
  */
 public class rewriting {
-    public static String replaceTableName(String oldSqlText)
+    public static String replaceTableName(String oldSqlText,String oldTableName, String newTableName)
     {
 
         TGSqlParser sqlparser = new TGSqlParser(EDbVendor.dbvoracle);
@@ -34,13 +37,18 @@ public class rewriting {
             TTable t ;
             for(int i=0;i<select.tables.size();i++){
                 t = select.tables.getTable(i);
-                if (t.toString().compareToIgnoreCase("table2") == 0){
+                if (t.toString().compareToIgnoreCase(oldTableName) == 0){
                     for(int j=0;j<t.getObjectNameReferences().size();j++){
-                        if(t.getObjectNameReferences().getObjectName(j).getObjectToken().toString().equalsIgnoreCase("table2")){
-                            t.getObjectNameReferences().getObjectName(j).getObjectToken().astext = "table3";
+                        TObjectNameList tmpNameList = t.getObjectNameReferences();
+                        TObjectName tmpName = tmpNameList.getObjectName(j);
+                        TSourceToken tmpToken = tmpName.getObjectToken();
+                        if (tmpToken==null)
+                            continue;
+                        else if(t.getObjectNameReferences().getObjectName(j).getObjectToken().toString().equalsIgnoreCase(oldTableName)){
+                            t.getObjectNameReferences().getObjectName(j).getObjectToken().astext = newTableName;
                         }
                     }
-                    t.setString("(tableX join tableY using (id)) as table3");
+                    t.setString(newTableName);
                 }
             }
 
@@ -99,7 +107,7 @@ public class rewriting {
                     break;
                 case DropColumn:
                     break;
-                case RenameColumn:
+                case RenameTable:
                     JoinPath jp = info.joinPath;
                     //changePositionArr = searchRelatedQuery(jp.tableAndColumns,fileName);
                     //rewrite
@@ -110,7 +118,7 @@ public class rewriting {
                     try {
                         br = new BufferedReader(new FileReader(fileName));
                         while ((line = br.readLine()) != null) {
-                            newLine = replaceTableName(line);
+                            newLine = replaceTableName(line,info.oriTableName,info.replacedTableName);
                             buf.append(newLine);
                         }
                     } catch (Exception e) {
@@ -126,6 +134,8 @@ public class rewriting {
                     }
                     FileModify fileModifier = new FileModify();
                     fileModifier.write(newFileName,buf.toString());
+                    break;
+                case RenameColumn:
                     break;
 
             }

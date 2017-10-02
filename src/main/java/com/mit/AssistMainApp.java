@@ -37,6 +37,7 @@ public class AssistMainApp {
         String createSchemaFile = new String();
         String modifySchemaFile = new String();
         String queryFile = new String();
+        String newQueryFile = null;
         Options options = new Options();
 
         Option createFile = new Option("c", "create", true, "createSchemaFile");
@@ -50,6 +51,10 @@ public class AssistMainApp {
         Option qFile = new Option("q", "query", true, "queryFile");
         qFile.setRequired(true);
         options.addOption(qFile);
+
+        Option newQFile = new Option("n","newQuery",true,"newQueryFile");
+        newQFile.setRequired(true);
+        options.addOption(newQFile);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -71,6 +76,7 @@ public class AssistMainApp {
         createSchemaFile = cmd.getOptionValue("c");
         modifySchemaFile = cmd.getOptionValue("m");
         queryFile = cmd.getOptionValue("q");
+        newQueryFile = cmd.getOptionValue("n");
 
         File file=new File(createSchemaFile);
         if (!file.exists()){
@@ -124,8 +130,9 @@ public class AssistMainApp {
         dmlFileName[0] = modifySchemaFile;
         readDML.main(dmlFileName);
 
-        //start rewriting process
 
+        // /start rewriting process
+        rewriting.rewrite(queryFile,newQueryFile);
     }
 
 

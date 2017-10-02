@@ -33,11 +33,20 @@ public class identification {
                 case DropColumn:
                     //find join path
                     break;
+                case RenameTable:
+                    //only have to add to current table
+                    ArrayList<String> columnList = new ArrayList<String>();
+                    newInfo.joinPath.tableAndColumns.add(new TwoTuple<String,ArrayList<String>> (tableName,columnList));
+                    String newTableName = alterOp.getNewTableName().toString();
+                    newInfo.oriTableName = tableName;
+                    newInfo.replacedTableName = newTableName;
+                    break;
                 case RenameColumn:
                     //only have to add current table
-                    ArrayList<String> columnList = new ArrayList<String>();
-                    columnList.add(alterOp.getColumnName().toString());
-                    newInfo.joinPath.tableAndColumns.add(new TwoTuple<String,ArrayList<String>> (tableName,columnList));
+                    ArrayList<String> columnListForRenameCol = new ArrayList<String>();
+                    columnListForRenameCol.add(alterOp.getColumnName().toString());
+                    newInfo.joinPath.tableAndColumns.add(new TwoTuple<String,ArrayList<String>> (tableName,columnListForRenameCol));
+                    break;
 
             }
             alterInfoList.add(newInfo);
