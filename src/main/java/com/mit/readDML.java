@@ -1,10 +1,7 @@
 package com.mit;
 
 import com.mit.dataStructure.table_info;
-import gudusoft.gsqlparser.EDbVendor;
-import gudusoft.gsqlparser.TCustomSqlStatement;
-import gudusoft.gsqlparser.TGSqlParser;
-import gudusoft.gsqlparser.TStatementList;
+import gudusoft.gsqlparser.*;
 import gudusoft.gsqlparser.nodes.TAlterTableOption;
 import gudusoft.gsqlparser.stmt.TAlterTableStatement;
 import gudusoft.gsqlparser.stmt.TCreateTableSqlStatement;
@@ -112,6 +109,8 @@ public class readDML {
             statementList = sqlparser.sqlstatements;
             for(int i=0;i<sqlparser.sqlstatements.size();i++){
                 TCustomSqlStatement stmt = sqlparser.sqlstatements.get(i);
+                ESqlStatementType type = stmt.sqlstatementtype;
+                ddlparser.analyzeStmt(stmt);
                 ddlparser.analyzeAlterTableStmt((TAlterTableStatement) sqlparser.sqlstatements.get(i));
                 dealWithDML((TAlterTableStatement) sqlparser.sqlstatements.get(i));
                 System.out.println("");

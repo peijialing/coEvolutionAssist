@@ -46,6 +46,10 @@ public class identification {
                     ArrayList<String> columnListForRenameCol = new ArrayList<String>();
                     columnListForRenameCol.add(alterOp.getColumnName().toString());
                     newInfo.joinPath.tableAndColumns.add(new TwoTuple<String,ArrayList<String>> (tableName,columnListForRenameCol));
+                    String newColName = alterOp.getNewColumnName().toString();
+                    String oldColName = alterOp.getColumnName().toString();
+                    newInfo.oriColName = oldColName;
+                    newInfo.replacedColName = newColName;
                     break;
 
             }

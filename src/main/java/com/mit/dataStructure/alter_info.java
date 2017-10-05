@@ -12,11 +12,16 @@ public class alter_info {
         joinPath = new JoinPath();
         replacedTableName = null;
         oriTableName = null;
+        replacedColName = null;
+        oriColName = null;
 
     }
     public EAlterTableOptionType type;
     public JoinPath joinPath;
+    //rename a table
     public String oriTableName;
     public String replacedTableName;
+    //rename a column
+    public String oriColName;
     public String replacedColName;
 }
