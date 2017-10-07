@@ -131,8 +131,14 @@ public class AssistMainApp {
         readDML.main(dmlFileName);
 
 
-        // /start rewriting process
+        // start rewriting process
         rewriting.rewrite(queryFile,newQueryFile);
+
+        // start calculation process
+        int appMaint = calculation.calc_appmain(rewriting.MaintainLines);
+
+        System.out.println("============appMaint===============");
+        System.out.println(appMaint);
     }
 
 

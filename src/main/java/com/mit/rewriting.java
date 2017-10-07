@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * Created by peijialing on 23/8/2017.
  */
 public class rewriting {
+    public static int MaintainLines = 0;
     public static String[] eliminatePrefix(String oldtext){
         String[] newText = null;
         if (oldtext.contains(".")){
@@ -30,6 +31,7 @@ public class rewriting {
         return prefix+"."+colName;
     }
     public static String replaceColName(String oldSqlText, JoinPath jp, String newColName){
+        boolean changeFlag = false;
         TGSqlParser sqlParser = new TGSqlParser(EDbVendor.dbvoracle);
         String tableName = jp.tableAndColumns.get(0).first;
         String newSqlText = null;
@@ -47,9 +49,11 @@ public class rewriting {
                 String prefix = eliminatePrefix(columns.getResultColumn(i).toString())[0];
                 String colName = eliminatePrefix(columns.getResultColumn(i).toString())[1];
                 if (colName.equalsIgnoreCase(oldColName)){
+                    changeFlag = true;
                     columns.getResultColumn(i).setString(mergePrefix(prefix,newColName));
                 }
             }
+            if (changeFlag) MaintainLines+=2;
             System.out.println("\noutput sql:");
             System.out.println(select.toString());
             newSqlText = select.toString();
@@ -61,7 +65,7 @@ public class rewriting {
     }
     public static String replaceTableName(String oldSqlText,String oldTableName, String newTableName)
     {
-
+        boolean changeFlag = false;
         TGSqlParser sqlparser = new TGSqlParser(EDbVendor.dbvoracle);
 
         sqlparser.sqltext = oldSqlText;
@@ -81,6 +85,7 @@ public class rewriting {
             for(int i=0;i<select.tables.size();i++){
                 t = select.tables.getTable(i);
                 if (t.toString().compareToIgnoreCase(oldTableName) == 0){
+                    changeFlag = true;
                     for(int j=0;j<t.getObjectNameReferences().size();j++){
                         TObjectNameList tmpNameList = t.getObjectNameReferences();
                         TObjectName tmpName = tmpNameList.getObjectName(j);
@@ -94,7 +99,7 @@ public class rewriting {
                     t.setString(newTableName);
                 }
             }
-
+            if (changeFlag) MaintainLines += 2;
             System.out.println("\noutput sql:");
             System.out.println(select.toString());
             newSqlText = select.toString();
@@ -142,10 +147,10 @@ public class rewriting {
     public static void rewrite(String fileName, String newFileName) {
         ArrayList<alter_info> alterInfoList = identification.alterInfoList;
         for (int i=0; i<alterInfoList.size();++i) {
-            int tmp = alterInfoList.size();
             alter_info info = alterInfoList.get(i);
             ArrayList<Integer> changePositionArr = new ArrayList<Integer>();
             JoinPath jp = info.joinPath;
+            MaintainLines = 0;
             switch (info.type) {
                 case AddColumn:
                     //do nothing;
@@ -163,7 +168,7 @@ public class rewriting {
                     try {
                         br = new BufferedReader(new FileReader(fileName));
                         while ((line = br.readLine()) != null) {
-                            newLine = replaceTableName(line,info.oriTableName,info.replacedTableName);
+                            newLine = replaceTableName(line,info.oriTableName,info.replacedTableName)+"\n";
                             buf.append(newLine);
                         }
                     } catch (Exception e) {
@@ -189,7 +194,7 @@ public class rewriting {
                     try {
                         br = new BufferedReader(new FileReader(fileName));
                         while ((line = br.readLine()) != null) {
-                            newLine = replaceColName(line,jp,info.replacedColName);
+                            newLine = replaceColName(line,jp,info.replacedColName)+"\n";
                             buf.append(newLine);
                         }
                     } catch (Exception e) {
