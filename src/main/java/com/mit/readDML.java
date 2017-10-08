@@ -1,5 +1,6 @@
 package com.mit;
 
+import com.mit.dataStructure.foreignKey;
 import com.mit.dataStructure.table_info;
 import gudusoft.gsqlparser.*;
 import gudusoft.gsqlparser.nodes.TAlterTableOption;
@@ -57,6 +58,23 @@ public class readDML {
                     System.out.println("========debug=========");
                     break;
                 case RenameColumn:
+                    //todo
+                    AssistMainApp.tableList.get(tableId).columnNameList.remove(alterOp.getColumnName().toString());
+                    AssistMainApp.tableList.get(tableId).columnNameList.add(alterOp.getNewColumnName().toString());
+                    ArrayList<String> primKeyList = AssistMainApp.tableList.get(tableId).primaryKey;
+                    if (primKeyList.contains(alterOp.getColumnName().toString())){
+                        primKeyList.remove(alterOp.getColumnName().toString());
+                        primKeyList.add(alterOp.getNewColumnName().toString());
+                    }
+                    ArrayList<foreignKey> foreignKeyList = AssistMainApp.tableList.get(tableId).foreignKey;
+                    for (int j=0; j<foreignKeyList.size();++j) {
+                        if (foreignKeyList.get(j).keyName.contains(alterOp.getColumnName().toString())){
+                            int index = foreignKeyList.get(j).keyName.indexOf(alterOp.getColumnName().toString());
+                            foreignKeyList.get(j).keyName.set(index, alterOp.getNewColumnName().toString());
+                            System.out.print("========debug===========");
+                        }
+                    }
+
                     break;
 
             }

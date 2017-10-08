@@ -147,8 +147,12 @@ public class ddlparser {
                 if(outline){
                     String lcstr="";
                     if (constraint.getColumnList() != null){
+                        System.out.println("colsize");
+                        System.out.println(constraint.getColumnList().size());
+                        constraint.getColumnList();
                         for(int k=0;k<constraint.getColumnList().size();k++){
                             if (k !=0 ){lcstr = lcstr+",";}
+                            TPTNodeList key = constraint.getColumnList();
                             lcstr = lcstr+constraint.getColumnList().getElement(k).toString();
                         }
                     }
@@ -351,19 +355,31 @@ public class ddlparser {
                 System.out.println("\tinline constraints:");
                 for(int j=0;j<column.getConstraints().size();j++){
                     TConstraint constraint = column.getConstraints().getConstraint(j);
+                    System.out.println(column.getConstraints().getConstraint(j).getConstraint_type());
                     switch (column.getConstraints().getConstraint(j).getConstraint_type()){
                         case primary_key:
-                            if (constraint.getColumnList() != null){
-                                    for(int k=0;k<constraint.getColumnList().size();k++){
-                                        primaryKey.add(constraint.getColumnList().getElement(k).toString());
-                                    }
-
-                                }
+                            primaryKey.add(column.getColumnName().toString());
                             break;
                         case foreign_key:
-                        case reference:
                             System.out.println("\t\tforeign key");
                             foreignKey fk = new foreignKey();
+                            if (constraint.getColumnList() != null){
+                                for(int k=0;k<constraint.getColumnList().size();k++){
+                                    fk.keyName.add( constraint.getColumnList().getElement(k).toString());
+                                }
+                            }
+                            fk.RefTable = constraint.getReferencedObject().toString();
+                            System.out.println("\t\treferenced table:"+constraint.getReferencedObject().toString());
+                            if (constraint.getReferencedColumnList() != null){
+                                for(int k=0;k<constraint.getReferencedColumnList().size();k++){
+
+                                    fk.RefAttr.add(constraint.getReferencedColumnList().getObjectName(k).toString());
+                                }
+                            }
+                            break;
+                        case reference:
+                            System.out.println("\t\tforeign key");
+                            fk = new foreignKey();
                             if (constraint.getColumnList() != null){
                                 for(int k=0;k<constraint.getColumnList().size();k++){
                                     fk.keyName.add( constraint.getColumnList().getElement(k).toString());
@@ -385,18 +401,44 @@ public class ddlparser {
             }
             System.out.println("");
         }
-        table.tableName = tableName;
-        table.columnNameList = coloumnList;
-        table.primaryKey = primaryKey;
-        table.foreignKey = foreignKeyList;
+
 
         if(pStmt.getTableConstraints().size() > 0){
             System.out.println("\toutline constraints:");
             for(int i=0;i<pStmt.getTableConstraints().size();i++){
+                TConstraint constraint = pStmt.getTableConstraints().getConstraint(i);
+                switch (constraint.getConstraint_type()){
+                    case foreign_key:
+                    case reference:
+                        System.out.println("\t\tforeign key");
+                        foreignKey fk = new foreignKey();
+                        if (constraint.getColumnList() != null){
+                            for(int k=0;k<constraint.getColumnList().size();k++){
+                                //TPTNodeList<TColumnWithSortOrder> t = constraint.getColumnList();
+                                String kName = constraint.getColumnList().elementAt(k).getColumnName().toString();
+                                //tring keyName = constraint.getColumnList().getElement(k).toString();
+                                fk.keyName.add(kName);
+                            }
+                        }
+                        fk.RefTable = constraint.getReferencedObject().toString();
+                        System.out.println("\t\treferenced table:"+constraint.getReferencedObject().toString());
+                        if (constraint.getReferencedColumnList() != null){
+                            for(int k=0;k<constraint.getReferencedColumnList().size();k++){
+
+                                fk.RefAttr.add(constraint.getReferencedColumnList().getObjectName(k).toString());
+                            }
+                        }
+                        foreignKeyList.add(fk);
+                        break;
+                }
                 printConstraint(pStmt.getTableConstraints().getConstraint(i), true);
                 System.out.println("");
             }
         }
+        table.tableName = tableName;
+        table.columnNameList = coloumnList;
+        table.primaryKey = primaryKey;
+        table.foreignKey = foreignKeyList;
         return table;
     }
 
