@@ -30,29 +30,50 @@ public class rewriting {
     public static String mergePrefix(String prefix, String colName){
         return prefix+"."+colName;
     }
-    public static String replaceColName(String oldSqlText, JoinPath jp, String newColName){
+    public static String replaceColName(String oldSqlText, JoinPath jp, TObjectName newCol){
         boolean changeFlag = false;
         TGSqlParser sqlParser = new TGSqlParser(EDbVendor.dbvoracle);
-        String tableName = jp.tableAndColumns.get(0).first;
+        String oldTableName = jp.tableAndColumns.get(0).first;
         String newSqlText = null;
         String oldColName = jp.tableAndColumns.get(0).second.get(0);
         sqlParser.sqltext = oldSqlText;
         System.out.println("inpupt sql:");
         System.out.println(sqlParser.sqltext);
+        TObjectNameList columns = new TObjectNameList();
         int ret = sqlParser.parse();
         if (ret==0){
             TSelectSqlStatement select = (TSelectSqlStatement)sqlParser.sqlstatements.get(0);
-            TResultColumnList columns = select.getResultColumnList();
-            for (int i=0; i<columns.size();++i){
-                System.out.println("========debug========");
-                System.out.println(columns.getResultColumn(i).toString());
-                String prefix = eliminatePrefix(columns.getResultColumn(i).toString())[0];
-                String colName = eliminatePrefix(columns.getResultColumn(i).toString())[1];
-                if (colName.equalsIgnoreCase(oldColName)){
-                    changeFlag = true;
-                    columns.getResultColumn(i).setString(mergePrefix(prefix,newColName));
+            for(int i=0;i<select.tables.size();i++){
+                TTable table = select.tables.getTable(i);
+                String table_name = table.getName();
+                System.out.println("Analyzing: "+ table_name +" <- "+ select.sqlstatementtype);
+                for (int j=0; j < table.getLinkedColumns().size(); j++) {
+                    TObjectName objectName = table.getLinkedColumns().getObjectName(j);
+                    String currentColName = objectName.getColumnNameOnly();
+                    if ((oldTableName.equalsIgnoreCase(table_name) || oldTableName.equalsIgnoreCase(table.getAliasName())) && oldColName.equalsIgnoreCase(currentColName)){
+                        changeFlag = true;
+                        objectName.setString(objectName.toString().split("\\.")[0]+"."+newCol);
+                    }
+                    String column_name = table_name +"."+ objectName.getColumnNameOnly().toLowerCase();
+                    columns.addObjectName(objectName);
+                    if (!objectName.isTableDetermined()) {
+                        column_name = "?."+ objectName.getColumnNameOnly().toLowerCase();
+                    }
+                    System.out.println("Analyzing: "+ column_name +" in "+ select.sqlstatementtype +" "+ objectName.getLocation());
                 }
             }
+
+            //TResultColumnList columns = select.getResultColumnList();
+//            for (int i=0; i<columns.size();++i){
+//                System.out.println("========debug========");
+//                System.out.println(columns.getObjectName(i).toString());
+//                String prefix = eliminatePrefix(columns.getObjectName(i).toString())[0];
+//                String colName = eliminatePrefix(columns.getObjectName(i).toString())[1];
+//                if (colName.equalsIgnoreCase(oldColName)){
+//                    changeFlag = true;
+//                    columns.getObjectName(i).setString(mergePrefix(prefix,newColName));
+//                }
+//            }
             if (changeFlag) MaintainLines+=2;
             System.out.println("\noutput sql:");
             System.out.println(select.toString());
@@ -63,7 +84,7 @@ public class rewriting {
         }
         return newSqlText;
     }
-    public static String replaceTableName(String oldSqlText,String oldTableName, String newTableName)
+    public static String replaceTableName(String oldSqlText,table_info oldTableName, String newTableName)
     {
         boolean changeFlag = false;
         TGSqlParser sqlparser = new TGSqlParser(EDbVendor.dbvoracle);
@@ -84,15 +105,16 @@ public class rewriting {
             TTable t ;
             for(int i=0;i<select.tables.size();i++){
                 t = select.tables.getTable(i);
-                if (t.toString().compareToIgnoreCase(oldTableName) == 0){
+                if (t.toString().compareToIgnoreCase(oldTableName.tableName) == 0){
                     changeFlag = true;
                     for(int j=0;j<t.getObjectNameReferences().size();j++){
                         TObjectNameList tmpNameList = t.getObjectNameReferences();
                         TObjectName tmpName = tmpNameList.getObjectName(j);
                         TSourceToken tmpToken = tmpName.getObjectToken();
+                        String alias = oldTableName.tableName;
                         if (tmpToken==null)
                             continue;
-                        else if(t.getObjectNameReferences().getObjectName(j).getObjectToken().toString().equalsIgnoreCase(oldTableName)){
+                        else if(tmpToken.toString().equalsIgnoreCase(oldTableName.tableName) || tmpToken.toString().equalsIgnoreCase(t.getAliasName())){
                             t.getObjectNameReferences().getObjectName(j).getObjectToken().astext = newTableName;
                         }
                     }
@@ -194,7 +216,7 @@ public class rewriting {
                     try {
                         br = new BufferedReader(new FileReader(fileName));
                         while ((line = br.readLine()) != null) {
-                            newLine = replaceColName(line,jp,info.replacedColName)+"\n";
+                            newLine = replaceColName(line,jp,info.replacedCol)+"\n";
                             buf.append(newLine);
                         }
                     } catch (Exception e) {

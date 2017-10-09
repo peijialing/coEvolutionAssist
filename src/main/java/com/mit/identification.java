@@ -7,6 +7,8 @@ import gudusoft.gsqlparser.EAlterTableOptionType;
 import gudusoft.gsqlparser.TCustomSqlStatement;
 import gudusoft.gsqlparser.TStatementList;
 import gudusoft.gsqlparser.nodes.TAlterTableOption;
+import gudusoft.gsqlparser.nodes.TColumnWithSortOrder;
+import gudusoft.gsqlparser.nodes.TObjectName;
 import gudusoft.gsqlparser.stmt.TAlterTableStatement;
 
 import java.io.BufferedReader;
@@ -38,7 +40,12 @@ public class identification {
                     ArrayList<String> columnList = new ArrayList<String>();
                     newInfo.joinPath.tableAndColumns.add(new TwoTuple<String,ArrayList<String>> (tableName,columnList));
                     String newTableName = alterOp.getNewTableName().toString();
-                    newInfo.oriTableName = tableName;
+                    for (int j=0;j<AssistMainApp.tableList.size();++j){
+                        if (AssistMainApp.tableList.get(i).tableName.equalsIgnoreCase(tableName)){
+                            newInfo.oriTableName = AssistMainApp.tableList.get(i);
+                        }
+                    }
+                    String alias = newInfo.oriTableName.aliasName;
                     newInfo.replacedTableName = newTableName;
                     break;
                 case RenameColumn:
@@ -46,10 +53,10 @@ public class identification {
                     ArrayList<String> columnListForRenameCol = new ArrayList<String>();
                     columnListForRenameCol.add(alterOp.getColumnName().toString());
                     newInfo.joinPath.tableAndColumns.add(new TwoTuple<String,ArrayList<String>> (tableName,columnListForRenameCol));
-                    String newColName = alterOp.getNewColumnName().toString();
-                    String oldColName = alterOp.getColumnName().toString();
-                    newInfo.oriColName = oldColName;
-                    newInfo.replacedColName = newColName;
+                    TObjectName newColName = alterOp.getNewColumnName();
+                    TObjectName oldColName = alterOp.getColumnName();
+                    newInfo.oriCol = oldColName;
+                    newInfo.replacedCol = newColName;
                     break;
 
             }

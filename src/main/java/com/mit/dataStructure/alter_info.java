@@ -1,6 +1,8 @@
 package com.mit.dataStructure;
 
 import gudusoft.gsqlparser.EAlterTableOptionType;
+import gudusoft.gsqlparser.nodes.TObjectName;
+import gudusoft.gsqlparser.nodes.TTable;
 
 import java.util.ArrayList;
 
@@ -12,16 +14,17 @@ public class alter_info {
         joinPath = new JoinPath();
         replacedTableName = null;
         oriTableName = null;
-        replacedColName = null;
-        oriColName = null;
+        replacedCol = null;
+        oriCol = null;
+
 
     }
     public EAlterTableOptionType type;
     public JoinPath joinPath;
     //rename a table
-    public String oriTableName;
+    public table_info oriTableName;
     public String replacedTableName;
     //rename a column
-    public String oriColName;
-    public String replacedColName;
+    public TObjectName oriCol;
+    public TObjectName replacedCol;
 }

@@ -58,7 +58,7 @@ public class readDML {
                     System.out.println("========debug=========");
                     break;
                 case RenameColumn:
-                    //todo
+
                     AssistMainApp.tableList.get(tableId).columnNameList.remove(alterOp.getColumnName().toString());
                     AssistMainApp.tableList.get(tableId).columnNameList.add(alterOp.getNewColumnName().toString());
                     ArrayList<String> primKeyList = AssistMainApp.tableList.get(tableId).primaryKey;

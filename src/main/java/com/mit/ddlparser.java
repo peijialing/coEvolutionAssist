@@ -336,6 +336,7 @@ public class ddlparser {
         String tableName = pStmt.getTargetTable().toString();
         System.out.println("Columns:");
         table_info table = new table_info();
+        String aliasName = pStmt.tables.getTable(0).getAliasName();
         ArrayList<String> coloumnList = new ArrayList<String>();
         ArrayList<String> primaryKey = new ArrayList<String>();
         ArrayList<foreignKey> foreignKeyList = new ArrayList<foreignKey>();
@@ -435,6 +436,7 @@ public class ddlparser {
                 System.out.println("");
             }
         }
+        table.aliasName = aliasName;
         table.tableName = tableName;
         table.columnNameList = coloumnList;
         table.primaryKey = primaryKey;
