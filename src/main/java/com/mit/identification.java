@@ -6,9 +6,7 @@ import com.mit.dataStructure.alter_info;
 import gudusoft.gsqlparser.EAlterTableOptionType;
 import gudusoft.gsqlparser.TCustomSqlStatement;
 import gudusoft.gsqlparser.TStatementList;
-import gudusoft.gsqlparser.nodes.TAlterTableOption;
-import gudusoft.gsqlparser.nodes.TColumnWithSortOrder;
-import gudusoft.gsqlparser.nodes.TObjectName;
+import gudusoft.gsqlparser.nodes.*;
 import gudusoft.gsqlparser.stmt.TAlterTableStatement;
 
 import java.io.BufferedReader;
@@ -34,6 +32,11 @@ public class identification {
                     break;
                 case DropColumn:
                     //find join path
+                    TObjectName dropppedColName  = alterOp.getColumnNameList().getObjectName(0);
+                    gudusoft.gsqlparser.nodes.TTable tb = stmt.tables.getTable(0);
+                    newInfo.droppedCol = dropppedColName;
+                    newInfo.joinPath.tableAndColumns.add(new TwoTuple<String,ArrayList<String>> (tableName,new ArrayList<String>()));
+                    newInfo.droppedColSouceTable = tb;
                     break;
                 case RenameTable:
                     //only have to add to current table

@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1700f8e9-0158-43d5-bd36-bb03a68d58ed" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mit/tableColumnRename.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coEvolutionAssist.iml" afterPath="$PROJECT_DIR$/coEvolutionAssist.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/JoinPath.java" afterPath="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/JoinPath.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/alter_info.java" afterPath="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/alter_info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/table_info.java" afterPath="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/table_info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mit/ddlparser.java" afterPath="$PROJECT_DIR$/src/main/java/com/mit/ddlparser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mit/identification.java" afterPath="$PROJECT_DIR$/src/main/java/com/mit/identification.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mit/readDML.java" afterPath="$PROJECT_DIR$/src/main/java/com/mit/readDML.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mit/rewriting.java" afterPath="$PROJECT_DIR$/src/main/java/com/mit/rewriting.java" />
@@ -26,49 +21,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="readDML.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/readDML.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9">
-              <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="identification.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/identification.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TAlterTableOption.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TAlterTableOption.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+            <state relative-caret-position="345">
+              <caret line="38" column="36" lean-forward="true" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
               <folding>
-                <element signature="e#7936#7937#0" expanded="true" />
-                <element signature="e#7965#7966#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssistMainApp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/AssistMainApp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="120" column="57" lean-forward="true" selection-start-line="120" selection-start-column="57" selection-end-line="120" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1095#1107#0" expanded="true" />
+                <element signature="e#1900#1908#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,37 +43,61 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="joinRelationAnalyze.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/joinRelationAnalyze.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="115" column="6" lean-forward="false" selection-start-line="115" selection-start-column="6" selection-end-line="115" selection-end-column="6" />
+              <folding>
+                <element signature="e#19528#19543#0" expanded="true" />
+                <element signature="e#19670#19671#0" expanded="true" />
+                <element signature="e#19711#19712#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="alter_info.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/dataStructure/alter_info.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+            <state relative-caret-position="240">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rewriting.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rewriting.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/rewriting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="244">
+              <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ddlparser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/ddlparser.java">
+      <file leaf-file-name="AssistMainApp.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/AssistMainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="443" column="0" lean-forward="false" selection-start-line="443" selection-start-column="0" selection-end-line="443" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#13549#13557#0" expanded="true" />
-                <element signature="e#13613#13621#0" expanded="true" />
-                <element signature="e#13685#13697#0" expanded="true" />
+                <element signature="e#1095#1107#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TResultColumnList.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TResultColumnList.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="49" column="19" lean-forward="true" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,24 +105,31 @@
       <file leaf-file-name="TTable.class" pinned="false" current-in-tab="false">
         <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TTable.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="159" column="78" lean-forward="true" selection-start-line="159" selection-start-column="78" selection-end-line="159" selection-end-column="78" />
-              <folding>
-                <element signature="e#9406#9407#0" expanded="true" />
-                <element signature="e#9471#9472#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TAliasClause.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TAliasClause.class">
+      <file leaf-file-name="TObjectName.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TObjectName.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="86" column="23" lean-forward="false" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
+            <state relative-caret-position="224">
+              <caret line="128" column="33" lean-forward="false" selection-start-line="128" selection-start-column="25" selection-end-line="128" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TResultColumn.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TResultColumn.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="212" column="74" lean-forward="false" selection-start-line="212" selection-start-column="68" selection-end-line="212" selection-end-column="74" />
               <folding>
-                <element signature="e#1956#1957#0" expanded="true" />
-                <element signature="e#1985#1986#0" expanded="true" />
+                <element signature="e#8591#8592#0" expanded="true" />
+                <element signature="e#8681#8682#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -157,20 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>print</find>
-      <find>prin</find>
-      <find>g</find>
-      <find>ge t</find>
-      <find>ge</find>
-      <find>getPb</find>
-      <find>getP</find>
-      <find>geto</find>
-      <find>get</find>
-      <find>getObj</find>
-      <find>table</find>
-      <find>temp</find>
-      <find>args</find>
-      <find>tablename</find>
       <find>column</find>
       <find>sqlstatementType</find>
       <find>replace</find>
@@ -186,7 +162,21 @@
       <find>sourceTa</find>
       <find>getname</find>
       <find>tostring</find>
+      <find>partition</find>
+      <find>Partition</find>
+      <find>==</find>
+      <find>return this.g</find>
+      <find>match</find>
+      <find>objectName</find>
+      <find>return this.d</find>
+      <find>public</find>
       <find>alias</find>
+      <find>reference</find>
+      <find>table</find>
+      <find>equals</find>
+      <find>getsourc</find>
+      <find>ttable</find>
+      <find>al</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -218,7 +208,6 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/foreignKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/joinPath.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/JoinPath.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/TwoTuple.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/FileModify.java" />
         <option value="$PROJECT_DIR$/src/main/python/findSubSchema.py" />
@@ -226,14 +215,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mit/AssistMainApp.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/mit/testCase.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/mit/parsingDDL.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mit/readDML.java" />
         <option value="$PROJECT_DIR$/coEvolutionAssist.iml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/tableColumnRename.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/table_info.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/ddlparser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/alter_info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mit/JoinCondition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/JoinPath.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mit/readDML.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/identification.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mit/dataStructure/alter_info.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mit/rewriting.java" />
       </list>
     </option>
@@ -352,6 +343,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coEvolutionAssist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coEvolutionAssist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -420,6 +425,36 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="mit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coEvolutionAssist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coEvolutionAssist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joinRelationAnalyze.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1168,13 +1203,29 @@
       <envs />
       <method />
     </configuration>
-    <list size="6">
+    <configuration default="false" name="joinRelationAnalyze" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="com.mit.joinRelationAnalyze" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../query.sql $PROJECT_DIR$/../../analyzejoincondition.txt" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="coEvolutionAssist" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.parsingDDLtest" />
-      <item index="1" class="java.lang.String" itemvalue="Application.testCase" />
-      <item index="2" class="java.lang.String" itemvalue="Application.ddlparser" />
-      <item index="3" class="java.lang.String" itemvalue="Application.readDML" />
-      <item index="4" class="java.lang.String" itemvalue="Application.AssistMainApp" />
-      <item index="5" class="java.lang.String" itemvalue="Application.tableColumnRename" />
+      <item index="1" class="java.lang.String" itemvalue="Application.joinRelationAnalyze" />
+      <item index="2" class="java.lang.String" itemvalue="Application.testCase" />
+      <item index="3" class="java.lang.String" itemvalue="Application.ddlparser" />
+      <item index="4" class="java.lang.String" itemvalue="Application.readDML" />
+      <item index="5" class="java.lang.String" itemvalue="Application.AssistMainApp" />
+      <item index="6" class="java.lang.String" itemvalue="Application.tableColumnRename" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1209,16 +1260,15 @@
       <workItem from="1506951479025" duration="11557000" />
       <workItem from="1507045379449" duration="10979000" />
       <workItem from="1507252948493" duration="91000" />
-      <workItem from="1507386024107" duration="30994000" />
+      <workItem from="1507386024107" duration="52994000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148633000" />
+    <option name="totallyTimeSpent" value="170633000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1231,14 +1281,14 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23287672" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3219178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28219178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28082192" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23835616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17227723" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21369863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2673667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1297,22 +1347,16 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/mit/identification.java</url>
-          <line>48</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/mit/AssistMainApp.java</url>
+          <line>120</line>
           <properties />
-          <option name="timeStamp" value="114" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/mit/ddlparser.java</url>
-          <line>443</line>
-          <properties />
-          <option name="timeStamp" value="115" />
+          <option name="timeStamp" value="132" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="116" />
+      <option name="time" value="133" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1321,49 +1365,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-cli/commons-cli/1.4/commons-cli-1.4.jar!/org/apache/commons/cli/CommandLine.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-cli/commons-cli/1.4/commons-cli-1.4.jar!/org/apache/commons/cli/Option.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="339" column="30" lean-forward="false" selection-start-line="339" selection-start-column="30" selection-end-line="339" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/EAlterTableOptionType.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1755">
-          <caret line="120" column="36" lean-forward="false" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/python/findSubSchema.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TParseTreeNode.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="215" column="16" lean-forward="false" selection-start-line="215" selection-start-column="16" selection-end-line="215" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TResultColumnList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TParseTreeNodeList.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1419,14 +1420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/dataStructure/JoinPath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="56" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -1647,24 +1640,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TObjectName.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="228" column="27" lean-forward="false" selection-start-line="228" selection-start-column="19" selection-end-line="228" selection-end-column="27" />
-          <folding>
-            <element signature="e#18451#18452#0" expanded="true" />
-            <element signature="e#18509#18510#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/tableColumnRename.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="352" column="40" lean-forward="true" selection-start-line="352" selection-start-column="40" selection-end-line="352" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#16986#17008#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#16986#17008#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1688,24 +1670,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TTable.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/ddlparser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="159" column="78" lean-forward="true" selection-start-line="159" selection-start-column="78" selection-end-line="159" selection-end-column="78" />
+        <state relative-caret-position="3588">
+          <caret line="443" column="0" lean-forward="false" selection-start-line="443" selection-start-column="0" selection-end-line="443" selection-end-column="0" />
           <folding>
-            <element signature="e#9406#9407#0" expanded="true" />
-            <element signature="e#9471#9472#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#13549#13557#0" expanded="true" />
+            <element signature="e#13613#13621#0" expanded="true" />
+            <element signature="e#13685#13697#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TAlterTableOption.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+        <state relative-caret-position="177">
+          <caret line="136" column="22" lean-forward="true" selection-start-line="136" selection-start-column="22" selection-end-line="136" selection-end-column="22" />
           <folding>
-            <element signature="e#7936#7937#0" expanded="true" />
-            <element signature="e#7965#7966#0" expanded="true" />
+            <element signature="e#3908#3909#0" expanded="true" />
+            <element signature="e#3937#3938#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/EAlterTableOptionType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1177">
+          <caret line="108" column="13" lean-forward="false" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/JoinCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="511" column="4" lean-forward="false" selection-start-line="511" selection-start-column="4" selection-end-line="511" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/dataStructure/JoinPath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="74" lean-forward="false" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/readDML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding>
+            <element signature="e#5748#5749#0" expanded="true" />
+            <element signature="e#5784#5785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/joinRelationAnalyze.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="115" column="6" lean-forward="false" selection-start-line="115" selection-start-column="6" selection-end-line="115" selection-end-column="6" />
+          <folding>
+            <element signature="e#19528#19543#0" expanded="true" />
+            <element signature="e#19670#19671#0" expanded="true" />
+            <element signature="e#19711#19712#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1720,59 +1761,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/dataStructure/alter_info.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="240">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/AssistMainApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="120" column="57" lean-forward="true" selection-start-line="120" selection-start-column="57" selection-end-line="120" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1095#1107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/readDML.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/ddlparser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="443" column="0" lean-forward="false" selection-start-line="443" selection-start-column="0" selection-end-line="443" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13549#13557#0" expanded="true" />
-            <element signature="e#13613#13621#0" expanded="true" />
-            <element signature="e#13685#13697#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/identification.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="38" column="36" lean-forward="true" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+          <folding>
+            <element signature="e#1900#1908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TResultColumnList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="49" column="19" lean-forward="true" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TTable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TObjectName.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="128" column="33" lean-forward="false" selection-start-line="128" selection-start-column="25" selection-end-line="128" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/dist/gsp.jar!/gudusoft/gsqlparser/nodes/TResultColumn.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="212" column="74" lean-forward="false" selection-start-line="212" selection-start-column="68" selection-end-line="212" selection-end-column="74" />
+          <folding>
+            <element signature="e#8591#8592#0" expanded="true" />
+            <element signature="e#8681#8682#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/rewriting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="244">
+          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mit/AssistMainApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1095#1107#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

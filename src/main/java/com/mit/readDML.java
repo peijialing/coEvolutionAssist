@@ -4,6 +4,7 @@ import com.mit.dataStructure.foreignKey;
 import com.mit.dataStructure.table_info;
 import gudusoft.gsqlparser.*;
 import gudusoft.gsqlparser.nodes.TAlterTableOption;
+import gudusoft.gsqlparser.nodes.TObjectNameList;
 import gudusoft.gsqlparser.stmt.TAlterTableStatement;
 import gudusoft.gsqlparser.stmt.TCreateTableSqlStatement;
 
@@ -54,7 +55,8 @@ public class readDML {
                     break;
                 case DropColumn:
                     System.out.println("========debug=========");
-                    AssistMainApp.tableList.get(tableId).columnNameList.remove(alterOp.getColumnName().toString());
+                    TObjectNameList tmp = alterOp.getColumnNameList();
+                    AssistMainApp.tableList.get(tableId).columnNameList.remove(alterOp.getColumnNameList().toString());
                     System.out.println("========debug=========");
                     break;
                 case RenameColumn:

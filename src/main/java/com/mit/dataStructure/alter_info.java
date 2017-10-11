@@ -16,8 +16,8 @@ public class alter_info {
         oriTableName = null;
         replacedCol = null;
         oriCol = null;
-
-
+        droppedCol = null;
+        droppedColSouceTable = null;
     }
     public EAlterTableOptionType type;
     public JoinPath joinPath;
@@ -27,4 +27,7 @@ public class alter_info {
     //rename a column
     public TObjectName oriCol;
     public TObjectName replacedCol;
+    //drop a column
+    public  TObjectName droppedCol;
+    public  TTable droppedColSouceTable;
 }

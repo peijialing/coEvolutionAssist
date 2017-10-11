@@ -4,9 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Variable;
 import gudusoft.gsqlparser.EDbVendor;
 import gudusoft.gsqlparser.TGSqlParser;
 import gudusoft.gsqlparser.TSourceToken;
-import gudusoft.gsqlparser.nodes.TObjectName;
-import gudusoft.gsqlparser.nodes.TObjectNameList;
-import gudusoft.gsqlparser.nodes.TResultColumnList;
+import gudusoft.gsqlparser.nodes.*;
 import gudusoft.gsqlparser.nodes.TTable;
 import gudusoft.gsqlparser.stmt.TSelectSqlStatement;
 
@@ -132,6 +130,40 @@ public class rewriting {
         }
         return newSqlText;
     }
+    //todo: remove conditions
+    public static String dropColumn(String oldSqlText, TObjectName removeColName, TTable droppedColSourceTable){
+        boolean changeFlag = false;
+        TGSqlParser sqlparser = new TGSqlParser(EDbVendor.dbvoracle);
+        sqlparser.sqltext = oldSqlText;
+        System.out.println("input sql:");
+        System.out.println(sqlparser.sqltext);
+        String newSqlText = new String();
+        int ret = sqlparser.parse();
+        if (ret == 0) {
+            TSelectSqlStatement select = (TSelectSqlStatement) sqlparser.sqlstatements.get(0);
+            TResultColumnList columns = select.getResultColumnList();
+
+            for (int i=0; i<columns.size();++i){
+                String colName = columns.getResultColumn(i).getColumnNameOnly();
+                String tbOfCurrentCol = columns.getResultColumn(i).getPrefixTable();
+
+                String tbName = columns.getResultColumn(i).getFieldAttr().getSourceTable().toString();
+                String tbAlias = columns.getResultColumn(i).getFieldAttr().getSourceTable().getAliasName().toString();
+                if ((tbName.equalsIgnoreCase(tbOfCurrentCol) || tbAlias.equalsIgnoreCase(tbOfCurrentCol)) && colName.equalsIgnoreCase(removeColName.toString())){
+                    changeFlag = true;
+                    columns.removeResultColumn(i);
+                    break;
+                }
+            }
+            if (changeFlag) MaintainLines += 2;
+            System.out.println("\noutput sql:");
+            System.out.println(select.toString());
+            newSqlText = select.toString();
+        } else{
+            System.out.println(sqlparser.getErrormessage());
+        }
+        return newSqlText;
+    }
 
     public static ArrayList<Integer> searchRelatedQuery(ArrayList<TwoTuple<String, ArrayList<String>>> tableList, String fileName) {
         ArrayList<Integer> resArr = new ArrayList<Integer>();
@@ -177,8 +209,7 @@ public class rewriting {
                 case AddColumn:
                     //do nothing;
                     break;
-                case DropColumn:
-                    break;
+
                 case RenameTable:
 
                     //changePositionArr = searchRelatedQuery(jp.tableAndColumns,fileName);
@@ -217,6 +248,31 @@ public class rewriting {
                         br = new BufferedReader(new FileReader(fileName));
                         while ((line = br.readLine()) != null) {
                             newLine = replaceColName(line,jp,info.replacedCol)+"\n";
+                            buf.append(newLine);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (br != null) {
+                            try {
+                                br.close();
+                            } catch (IOException e) {
+                                br = null;
+                            }
+                        }
+                    }
+                    fileModifier = new FileModify();
+                    fileModifier.write(newFileName,buf.toString());
+                    break;
+                case DropColumn:
+                    br = null;
+                    line = null;
+                    newLine = null;
+                    buf = new StringBuffer();
+                    try {
+                        br = new BufferedReader(new FileReader(fileName));
+                        while ((line = br.readLine()) != null) {
+                            newLine = dropColumn(line,info.droppedCol,info.droppedColSouceTable)+"\n";
                             buf.append(newLine);
                         }
                     } catch (Exception e) {
