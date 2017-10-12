@@ -138,23 +138,36 @@ public class rewriting {
         System.out.println("input sql:");
         System.out.println(sqlparser.sqltext);
         String newSqlText = new String();
+        String droppedColSourceTbName = droppedColSourceTable.getName();
         int ret = sqlparser.parse();
         if (ret == 0) {
             TSelectSqlStatement select = (TSelectSqlStatement) sqlparser.sqlstatements.get(0);
+            //modify select objs
             TResultColumnList columns = select.getResultColumnList();
 
             for (int i=0; i<columns.size();++i){
                 String colName = columns.getResultColumn(i).getColumnNameOnly();
-                String tbOfCurrentCol = columns.getResultColumn(i).getPrefixTable();
-
                 String tbName = columns.getResultColumn(i).getFieldAttr().getSourceTable().toString();
                 String tbAlias = columns.getResultColumn(i).getFieldAttr().getSourceTable().getAliasName().toString();
-                if ((tbName.equalsIgnoreCase(tbOfCurrentCol) || tbAlias.equalsIgnoreCase(tbOfCurrentCol)) && colName.equalsIgnoreCase(removeColName.toString())){
+                if ((tbName.equalsIgnoreCase(droppedColSourceTbName) || tbAlias.equalsIgnoreCase(droppedColSourceTbName)) && colName.equalsIgnoreCase(removeColName.toString())){
                     changeFlag = true;
                     columns.removeResultColumn(i);
                     break;
                 }
             }
+            //remove where conditions
+
+            TWhereClause whereClause = select.getWhereClause();
+            TExpression condition = whereClause.getCondition();
+            ArrayList<TExpression>  expList = condition.getFlattedAndOrExprs();
+            for (TExpression exp:expList){
+                if (exp.toString().toLowerCase().contains(removeColName.toString().toLowerCase())){
+                    exp.remove2();
+                }
+            }
+
+            //remove join conditions
+            TJoinList joinClauses = select.getJoins();
             if (changeFlag) MaintainLines += 2;
             System.out.println("\noutput sql:");
             System.out.println(select.toString());
