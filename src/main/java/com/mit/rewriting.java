@@ -10,6 +10,7 @@ import gudusoft.gsqlparser.stmt.TSelectSqlStatement;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by peijialing on 23/8/2017.
@@ -130,7 +131,7 @@ public class rewriting {
         }
         return newSqlText;
     }
-    //todo: remove conditions
+
     public static String dropColumn(String oldSqlText, TObjectName removeColName, TTable droppedColSourceTable){
         boolean changeFlag = false;
         TGSqlParser sqlparser = new TGSqlParser(EDbVendor.dbvoracle);
@@ -168,6 +169,27 @@ public class rewriting {
 
             //remove join conditions
             TJoinList joinClauses = select.getJoins();
+
+            for (int i=0;i<joinClauses.size();++i){
+                TJoin joinClause = joinClauses.getJoin(i);
+                TJoinItemList joinClauseJoinItems = joinClause.getJoinItems();
+                for (int j=0;j<joinClauseJoinItems.size();++j){
+                    TExpression con = joinClauseJoinItems.getJoinItem(j).getOnCondition();
+                    ArrayList<TExpression> expListOfCon = con.getFlattedAndOrExprs();
+                    if (expListOfCon==null){
+                        continue;
+                    }
+                    for (TExpression expOfCon:expListOfCon){
+                        if (expOfCon.toString().toLowerCase().contains(removeColName.toString().toLowerCase())){
+                            expOfCon.remove2();
+                        }
+                    }
+                }
+
+            }
+
+
+
             if (changeFlag) MaintainLines += 2;
             System.out.println("\noutput sql:");
             System.out.println(select.toString());

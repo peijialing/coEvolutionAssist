@@ -511,7 +511,7 @@ public class joinRelationAnalyze
     private List<TCustomSqlStatement> searchInClauses = new ArrayList<TCustomSqlStatement>( );
     public HashMap queryAliasMap = new HashMap( );
     public HashSet<JoinCondition> joinRelationSet = new HashSet<JoinCondition>( );
-    private List<JoinCondition> conditions = new ArrayList<JoinCondition>( );
+    protected List<JoinCondition> conditions = new ArrayList<JoinCondition>( );
 
     public String getAnalysisResult( )
     {
