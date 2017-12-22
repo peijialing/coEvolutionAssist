@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+svn delete  svn://adapt.seiee.sjtu.edu.cn/papers/conclusion.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/correction.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/cover-bioinformatics.txt \
+           svn://adapt.seiee.sjtu.edu.cn/papers/cover-JASIST.txt \
+           svn://adapt.seiee.sjtu.edu.cn/papers/cover.txt \
+           svn://adapt.seiee.sjtu.edu.cn/papers/data.dat \
+           svn://adapt.seiee.sjtu.edu.cn/papers/data1.dat \
+           svn://adapt.seiee.sjtu.edu.cn/papers/data2.dat \
+           svn://adapt.seiee.sjtu.edu.cn/papers/data3.dat \
+           svn://adapt.seiee.sjtu.edu.cn/papers/data4.dat \
+           svn://adapt.seiee.sjtu.edu.cn/papers/description1.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/discuss.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/draw.plt \
+           svn://adapt.seiee.sjtu.edu.cn/papers/eval.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/example1.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/examplere.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/expression.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/figure \
+           svn://adapt.seiee.sjtu.edu.cn/papers/intro.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/llncs.cls \
+           svn://adapt.seiee.sjtu.edu.cn/papers/llncsdoc.sty \
+           svn://adapt.seiee.sjtu.edu.cn/papers/Makefile \
+           svn://adapt.seiee.sjtu.edu.cn/papers/natbib.bst \
+           svn://adapt.seiee.sjtu.edu.cn/papers/ocr.bib \
+           svn://adapt.seiee.sjtu.edu.cn/papers/paper.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/related.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/result1.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/semantics.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/semanticsfig.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/splncs_srt.bst \
+           svn://adapt.seiee.sjtu.edu.cn/papers/splncs.bst \
+           svn://adapt.seiee.sjtu.edu.cn/papers/splncs03.bst \
+           svn://adapt.seiee.sjtu.edu.cn/papers/svglov3.clo \
+           svn://adapt.seiee.sjtu.edu.cn/papers/svjour3.cls \
+           svn://adapt.seiee.sjtu.edu.cn/papers/syntax.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/syntaxfig.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/tmp.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/typingrulefig.tex \
+           svn://adapt.seiee.sjtu.edu.cn/papers/xmlre1.tex \
+            -m "delete wrong updates"

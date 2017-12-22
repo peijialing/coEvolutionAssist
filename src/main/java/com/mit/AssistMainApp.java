@@ -1,5 +1,6 @@
 package com.mit;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import gudusoft.gsqlparser.EAlterTableOptionType;
 import org.apache.commons.cli.*;
 import org.apache.commons.cli.Option.Builder;
@@ -30,7 +31,7 @@ public class AssistMainApp {
 
     public static ArrayList<table_info> tableList = new ArrayList<table_info>();
 
-    public static void main(String args[])
+    public static void main(String args[]) throws IOException
     {
         //parse args
 
@@ -38,6 +39,7 @@ public class AssistMainApp {
         String modifySchemaFile = new String();
         String queryFile = new String();
         String newQueryFile = null;
+        String pathName = null;
         Options options = new Options();
 
         Option createFile = new Option("c", "create", true, "createSchemaFile");
@@ -56,6 +58,10 @@ public class AssistMainApp {
         newQFile.setRequired(true);
         options.addOption(newQFile);
 
+        Option App_path = new Option("a","app_path",true,"appsPath");
+        App_path.setRequired(true);
+        options.addOption(App_path);
+
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -69,14 +75,12 @@ public class AssistMainApp {
             System.exit(1);
             return;
         }
-//        if (args.length != 1){
-//            System.out.println("Usage: java parsingDDL sqlfile.sql");
-//            return;
-//        }
+
         createSchemaFile = cmd.getOptionValue("c");
         modifySchemaFile = cmd.getOptionValue("m");
         queryFile = cmd.getOptionValue("q");
         newQueryFile = cmd.getOptionValue("n");
+        pathName = cmd.getOptionValue("a");
 
         File file=new File(createSchemaFile);
         if (!file.exists()){
@@ -135,7 +139,7 @@ public class AssistMainApp {
         rewriting.rewrite(queryFile,newQueryFile);
 
         // start calculation process
-        int appMaint = calculation.calc_appmain(rewriting.MaintainLines);
+        int appMaint = calculation.calc_appmain(pathName);
 
         System.out.println("============appMaint===============");
         System.out.println(appMaint);

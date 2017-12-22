@@ -244,7 +244,6 @@ public class rewriting {
                 case AddColumn:
                     //do nothing;
                     break;
-
                 case RenameTable:
 
                     //changePositionArr = searchRelatedQuery(jp.tableAndColumns,fileName);
